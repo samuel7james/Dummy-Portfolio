@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            text-align: center;
+        }
+
+        header {
+            background-color: #161b22;
+            padding: 20px;
+            border-bottom: 2px solid #58a6ff;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #58a6ff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #79c0ff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            padding: 10px;
+        }
+
+        section {
+            background: #161b22;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+            margin: 20px 0;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            background-color: #58a6ff;
+            color: black;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #79c0ff;
+        }
+
+        #hiddenMessage {
+            display: none;
+            margin-top: 10px;
+            color: #58a6ff;
+        }
+
+        input {
+            width: 90%;
+            max-width: 300px;
+            padding: 8px;
+            margin: 5px;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            section {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Cyber Security Portfolio</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I’m <strong>Samuel James</strong>, a passionate <strong>cyber security enthusiast</strong> with a
+                keen interest in ethical hacking, penetration testing, and secure coding practices. I am currently
+                pursuing my <strong>Master of Computer Applications (MCA) in Cyber Security</strong> at <strong>Bennett
+                    University</strong>.</p>
+
+            <p>With a solid foundation in both offensive and defensive security, I am dedicated to exploring the
+                ever-evolving landscape of cyber threats and implementing robust security measures to safeguard digital
+                assets. My experience as a <strong>full-stack developer</strong> has equipped me with the technical
+                expertise to build secure applications while understanding vulnerabilities from a development
+                perspective.</p>
+
+            <p>Driven by curiosity and a problem-solving mindset, I am continuously learning and applying my skills to
+                real-world challenges. Whether it's identifying security loopholes, analyzing attack vectors, or
+                enhancing system defenses, I strive to contribute to a safer digital ecosystem.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <p>Penetration Testing, Ethical Hacking, Secure Coding, Cryptography</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form onsubmit="return validateForm()">
+                <input type="text" id="name" placeholder="Your Name"><br>
+                <input type="email" id="email" placeholder="Your Email"><br>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <button onclick="showMessage()">Click Me</button>
+        <p id="hiddenMessage">Hello Friend.</p>
+
+        <section class="quote-box">
+            <h2>Cyber Security Quote</h2>
+            <p id="quote">Click the button to get a security-related quote</p>
+            <p id="author"></p>
+            <button onclick="generateQuote()">New Quote</button>
+        </section>
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById('hiddenMessage').style.display = 'block';
+        }
+
+        function validateForm() {
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            if (name === "" || email === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+            return true;
+        }
+
+        const quotes = [
+            { text: "Security is not a product, but a process.", author: "Bruce Schneier" },
+            { text: "The best way to predict the future is to invent it.", author: "Alan Kay" },
+            { text: "There is no silver bullet with cyber security, a layered defense is the only viable option.", author: "James Scott" }
+        ];
+
+        function generateQuote() {
+            let randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById("quote").innerText = quotes[randomIndex].text;
+            document.getElementById("author").innerText = "- " + quotes[randomIndex].author;
+        }
+    </script>
+</body>
+
+</html>
